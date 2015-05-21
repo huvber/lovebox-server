@@ -1,0 +1,16 @@
+<template name="loveboxesList">
+  <ul class="list-group">
+    {{#each loveboxes}}
+      {{> loveboxItem}}
+    {{/each}}
+  </ul>
+  <a class="btn success" href="{{pathFor 'newLovebox'}}">Add Lovebox</a>
+</template>
+
+<template name='loveboxItem'>
+  <li class="list-group-item">{{name}} - {{state}}</li>
+</template>
+
+<template name="editLovebox">
+  {{> quickForm id="editLovebox" collection="Loveboxes" doc="this"}}
+</template>
