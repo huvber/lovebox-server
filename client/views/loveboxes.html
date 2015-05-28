@@ -1,16 +1,34 @@
 <template name="loveboxesList">
-  <ul class="list-group">
+  <div class="list-group">
     {{#each loveboxes}}
       {{> loveboxItem}}
     {{/each}}
-  </ul>
-  <a class="btn success" href="{{pathFor 'newLovebox'}}">Add Lovebox</a>
+  </div>
+  <a class="btn success" href="{{pathFor 'loveboxNew'}}">Add Lovebox</a>
 </template>
 
 <template name='loveboxItem'>
-  <li class="list-group-item">{{name}} - {{state}}</li>
+  <a href="{{pathFor 'loveboxDetail' _id}}" class="list-group-item">{{name}} - {{state}}</a>
 </template>
 
-<template name="editLovebox">
-  {{> quickForm id="editLovebox" collection="Loveboxes" doc="this"}}
+<template name="loveboxEdit">
+  <div class="form">
+    {{>quickForm id="loveboxEdit" collection="Loveboxes" type="method" meteormethod="loveboxAdd" }}
+  </div>
+</template>
+
+<template name="loveboxDetail">
+  <h4>Lovebox {{name}}</h4>
+  <div class="btn-group" role="group">
+    <button type="button" disable class="btn btn-default">{{state}}</button>
+    <button id="stop" type="button" class="btn btn-default glyphicon glyphicon-stop" title="Stop"></button>
+    <button id="play" type="button" class="btn btn-default glyphicon glyphicon-play" title="Play Next"></button>
+  </div>
+  <h5>List of Mp3</h5>
+  <ul class="list-group">
+    {{#each mp3s}}
+      {{> mp3Item }}
+    {{/each}}
+  </ul>
+  <a class="btn success" href="{{pathFor 'mp3Add' _id}}">Add Mp3</a>
 </template>

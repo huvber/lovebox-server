@@ -14,3 +14,4 @@ cfs:gridfs
 twbs:bootstrap
 ian:accounts-ui-bootstrap-3
 aldeed:autoform
+cfs:autoform

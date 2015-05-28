@@ -1,0 +1,12 @@
+<template name="mp3Item">
+  <li><a href="{{url}}">{{filename}}</a> - <button class="del label label-danger" data-id="{{_id}}">Remove</button></li>
+</template>
+
+<template name="mp3Add">
+  Select an Mp3
+  {{#autoForm id="mp3Add" collection="Mp3s" type="method" meteormethod="mp3Add"}}
+    {{> afQuickField name="lovebox" type="hidden" value=lovebox}}
+    {{> afQuickField name="file" type="cfs-file" collection="mbins" accept="audio/mpeg" }}
+    <button type="submit">Submit</button>
+  {{/autoForm}}
+</template>

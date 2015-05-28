@@ -16,6 +16,26 @@ Router.route('/', {
   }
 });
 Router.route('/loveboxes/new',{
-  name:'newLovebox',
-  template:'editLovebox',
+  name:'loveboxNew',
+  template:'loveboxEdit',
+});
+Router.route('/loveboxes/:_id',{
+  name:'loveboxDetail',
+  template:'loginHome',
+  yieldTemplates: {
+    'loveboxDetail': {to: 'left'},
+  },
+  data: function(){
+    return Loveboxes.findOne(this.params._id);
+  }
+});
+Router.route('/loveboxes/:_id/mp3',{
+  name:'mp3Add',
+  template:'loginHome',
+  yieldTemplates: {
+    'mp3Add': {to: 'bottom'},
+  },
+  data: function(){
+    return {lovebox : this.params._id };
+  }
 });
