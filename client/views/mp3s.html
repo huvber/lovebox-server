@@ -1,5 +1,7 @@
 <template name="mp3Item">
-  <li><a href="{{url}}">{{filename}}</a> - <button class="del label label-danger" data-id="{{_id}}">Remove</button></li>
+  <li class="list-group-item">
+    <button class="del badge" data-id="{{_id}}">Remove</button>
+    <a href="{{url}}">{{filename}}</a> </li>
 </template>
 
 <template name="mp3Add">

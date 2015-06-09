@@ -20,7 +20,7 @@ Template.loveboxDetail.events({
   },
   'click #play': function(e,template){
     e.preventDefault();
-    var newState = 'play';
+    var newState = 'next';
     var data = { _id: (template.data ? template.data._id: undefined),
                   state: newState
               };

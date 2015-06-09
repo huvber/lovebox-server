@@ -51,9 +51,8 @@ Meteor.methods({
     }catch(e){
       throw new Meteor.Error(e);
     }
-    console.log(mp3);
     var id = Mp3s.insert(mp3);
-    console.log(id);
+    return mp3;
   },
   'mp3List': function(loveboxId){
     var mp3s = Mp3s.find({lovebox: loveboxId}).fetch();
@@ -62,6 +61,14 @@ Meteor.methods({
       entry.filename = MBins.findOne({ _id: entry.file }).original.name;
     });
     return mp3s;
+  },
+  'mp3Remove': function(mp3Id){
+    var mp3 = Mp3s.find({ _id: mp3Id});
+    MBins.remove(mp3.file);
+    Mp3s.remove(mp3Id,function(err){
+      if(err)
+        throw new Meteor.error(500,'Impossible to delete');
+    });
   }
 });
 Mp3s.allow({
